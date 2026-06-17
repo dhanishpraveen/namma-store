@@ -24,6 +24,7 @@ export type productsParams = {
     updated_at:Date;
     location:string;
     product_comment:string;
+    quantity_selected:number|1
 }
 
 export type HomeProductsProps = {
@@ -32,7 +33,7 @@ export type HomeProductsProps = {
 
 function HomeProducts({products}:HomeProductsProps){
     return (
-        <div className="px-15 lg:px-30">
+        <div className="px-15 lg:px-30" id="products">
             <p className="pt-5 text-[15px] font-bold">Product details</p>
             <div className="grid grid-cols-2 lg:grid-cols-3 lg:mx-40">
                 {products.map((product,index)=>(
