@@ -17,7 +17,7 @@ export async function POST(request:Request){
         const response = await fetch("https://api.paystack.co/transaction/initialize",{
             method:"POST",
             headers:{
-                Authorization:"Bearer sk_test_f9e163d48f7928f9a4c24ec8d99c407991ce03d6 ",
+                Authorization:`Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
                 "Content-Type":"application/json" 
             },
             body:JSON.stringify({
