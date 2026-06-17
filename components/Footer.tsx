@@ -2,7 +2,7 @@
 function Footer() {
   return (
     <div className="bg-black flex flex-col items-center">
-        <div className="flex justify-around mx-25 pt-10 gap-20">
+        <div className="flex max-md:flex-col justify-around px-10 pt-10 gap-20 w-full">
             <div id="about" className="w-100">
                 <h1 className="text-xl font-bold">Namma Store</h1>
                 <p className="text-gray-400">
