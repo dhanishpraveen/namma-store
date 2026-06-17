@@ -1,10 +1,33 @@
-  import Image from "next/image"
+"use client"
+import Image from "next/image"
 import Navbar from "./Navbar"
 import { ProductCardProps } from "./ProductCard"
+import Link from "next/link"
+import toast, { Toaster } from "react-hot-toast"
 
-async function ProductDetails({product}:ProductCardProps){
+function ProductDetails({product}:ProductCardProps){
+
+    function handleAddToCart(){
+        const existingData = JSON.parse(localStorage.getItem("cartInformation") || "[]")
+
+        let alreadyPresent = false
+        for( const data of existingData){
+            console.log(data)
+            if(data.id === product.id){
+                alreadyPresent= true
+            }
+        }
+        if(alreadyPresent){
+            toast.error("Product already present in the cart")
+            return
+        }
+        const newData = [...existingData,product]
+        localStorage.setItem("cartInformation",JSON.stringify(newData))
+        toast.success("Product added to cart successfully")
+    }
     return (
         <div>
+            <Toaster/>
             <Navbar/>
             <div className="flex max-md:flex-col max-md:items-center justify-center mt-10">
                 <div>
@@ -22,8 +45,8 @@ async function ProductDetails({product}:ProductCardProps){
                     <p>Brand : {product.brand}</p>
                     <p>Category : {product.category.name}</p>
                     <div className="flex mt-4">
-                        <button className="border rounded px-15 py-3 mr-1 hover:bg-[gray] hover:text-black">Add to Cart</button>
-                        <button className="border rounded px-15 py-3 ml-1 bg-white text-black">Buy now</button>
+                        <button onClick={handleAddToCart} className="border rounded px-15 py-3 mr-1 hover:bg-[gray] hover:text-black">Add to Cart</button>
+                        <Link href={`/buy-now/${product.id}`} className="border rounded px-15 py-3 ml-1 bg-white text-black">Buy now</Link>
                     </div>
                 </div>
             </div>

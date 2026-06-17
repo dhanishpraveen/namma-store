@@ -6,11 +6,10 @@ import { fetchProducts } from "@/lib/actions/products.action";
 import React from "react";
 
 const allProducts = await fetchProducts();
-
-function page() {
+async function page() {
   return (
     <div>
-      <Navbar />
+      <Navbar/>
       <div>
         <HeaderSlider />
         <HomeProducts products={allProducts} />

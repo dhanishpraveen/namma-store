@@ -14,12 +14,12 @@ function HamX(params: HamXProps) {
   return (
     <div>
       {!isOpen && (
-        <button onClick={toggleMenu} className="flex justify-center w-6 h-6">
+        <button onClick={toggleMenu} className="flex justify-center w-6 h-6 cursor-pointer">
           <Image src={assets.hamIcon} alt="Ham icon" />
         </button>
       )}
       {isOpen && (
-        <button onClick={toggleMenu} className=" text-gray-500 text-md">
+        <button onClick={toggleMenu} className=" text-gray-500 text-md cursor-pointer">
           X
         </button>
       )}

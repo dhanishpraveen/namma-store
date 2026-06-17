@@ -14,7 +14,7 @@ export async function fetchProducts() {
 
 export async function fetchProductsById(id:string){
   const supabase = await createClient()
-  const { data: product, error } = await supabase.from("products").select("*").eq("id",id).single();
+  const { data: product, error } = await supabase.from("products").select("*,category:categories!fk_category(name)").eq("id",id).single();
   if (error) {
     console.log(error);
     return [];
