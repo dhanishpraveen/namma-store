@@ -1,6 +1,7 @@
 "use client"
 import {createOrder} from '@/lib/actions/orders.action'
 import { CreateOrder } from '@/shared.dtypes'
+import { parseUseCacheCacheStore } from 'next/dist/server/resume-data-cache/cache-store'
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
@@ -35,9 +36,11 @@ function VerifyPay({reference,amount,email}:{reference:string,amount:number,emai
                 country_code:localStorageItems.addressDetails.country_code
             }
             const orderId = await createOrder(orderItems)
+            localStorage.removeItem("paymentInformation")
             setTimeout(()=>router.push(`/order/${orderId}`),3000)
         }
         makeOrder()
+    
     })
     
 

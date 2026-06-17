@@ -93,7 +93,7 @@ export async function GET(request:Request,{params}:{params:Promise<{reference:st
         const response = await fetch(`https://api.paystack.co/transaction/verify/${reference}`,{
             method:"GET",
             headers:{
-                Authorization:"Bearer sk_test_f9e163d48f7928f9a4c24ec8d99c407991ce03d6 ",
+                Authorization:`Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
                 "Content-Type":"application/json" 
             }
         })

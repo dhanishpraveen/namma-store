@@ -40,9 +40,6 @@ function HomeProducts({products}:HomeProductsProps){
                         <ProductCard key={index} product={product} />
                 ))}
             </div>
-            <div className="flex justify-center">
-                {/* <button className="border px-5 py-2 rounded-[7] bg-[lightblue] text-black">See more</button> */}
-            </div>
         </div>
     )
 }

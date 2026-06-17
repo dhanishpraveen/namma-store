@@ -35,6 +35,8 @@ function VerifyPayCart({reference,amount,email}:{reference:string,amount:number,
                 }
                 const orderId = await createOrder(orderItems)
             }
+            localStorage.removeItem("paymentCartInformation")
+            localStorage.removeItem("cartInformation")
             setTimeout(()=>router.push('/orders/'),3000)
         }
         makeOrder()
